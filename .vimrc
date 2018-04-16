@@ -1,4 +1,4 @@
-execute pathogen#infect()
+call pathogen#infect()                      " use pathogen
 
 inoremap jk <ESC>
 nnoremap <SPACE> <Nop>
@@ -14,7 +14,9 @@ set number              " show line numbers
 
 set tabstop=4       	" number of visual spaces per TAB
 
-set showcmd             " show command in bottom bar
+set showcmd
+
+set noshowmode
 
 set cursorline          " highlight current line
 
@@ -39,6 +41,27 @@ nnoremap , za
 
 set foldmethod=indent   " fold based on indent level
 
+let g:lightline = {
+  \   'colorscheme': 'solarized',
+  \   'active': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ]
+  \   },
+	\   'component': {
+	\     'lineinfo': ' %3l:%-2v',
+	\   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
+let g:lightline.separator = {
+	\   'left': '', 'right': ''
+  \}
+let g:lightline.subseparator = {
+	\   'left': '', 'right': ''
+  \}
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -46,3 +69,15 @@ nnoremap k gk
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+
+"save session
+nnoremap <leader>s :mksession!<CR>
+
+let g:ackprg = 'ag --vimgrep'
+
+" open ack.vim
+nnoremap <leader>a :Ack 
