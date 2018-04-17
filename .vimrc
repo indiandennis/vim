@@ -10,6 +10,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+set encoding=UTF-8
+
 set number              " show line numbers
 
 set tabstop=4       	" number of visual spaces per TAB
@@ -41,26 +43,9 @@ nnoremap , za
 
 set foldmethod=indent   " fold based on indent level
 
-let g:lightline = {
-  \   'colorscheme': 'solarized',
-  \   'active': {
-  \     'left':[ [ 'mode', 'paste' ],
-  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-  \     ]
-  \   },
-	\   'component': {
-	\     'lineinfo': ' %3l:%-2v',
-	\   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head',
-  \   }
-  \ }
-let g:lightline.separator = {
-	\   'left': '', 'right': ''
-  \}
-let g:lightline.subseparator = {
-	\   'left': '', 'right': ''
-  \}
+" Airline Settings
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " move vertically by visual line
 nnoremap j gj
@@ -74,6 +59,8 @@ nnoremap <leader>u :GundoToggle<CR>
 
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 
+" toggle nerdtree
+nnoremap <leader>t :NERDTree<CR>
 "save session
 nnoremap <leader>s :mksession!<CR>
 
