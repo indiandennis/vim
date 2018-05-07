@@ -1,4 +1,4 @@
-call pathogen#infect()                      " use pathogen
+call pathogen#infect()  " use pathogen
 
 inoremap jk <ESC>
 nnoremap <SPACE> <Nop>
@@ -10,9 +10,18 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-set encoding=UTF-8
+
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+set guifont=DroidSansMono_Nerd_Font:h11
+
+set nocompatible
+
+set noshowmode
 
 set number              " show line numbers
+
+set relativenumber
+set undofile
 
 set tabstop=4       	" number of visual spaces per TAB
 
@@ -43,9 +52,34 @@ nnoremap , za
 
 set foldmethod=indent   " fold based on indent level
 
-" Airline Settings
 let g:airline_powerline_fonts = 1
+
 let g:airline_theme='solarized'
+"
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
+
+let g:airline#extensions#whitespace#checks = [ 'indent', 'long', 'mixed-indent-file' ]
+
+let g:lightline = {
+						\   'colorscheme': 'solarized',
+						\   'active': {
+						\     'left':[ [ 'mode', 'paste' ],
+						\              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+						\     ]
+						\   },
+						\	'component': {
+						\     'lineinfo': '%3l:%-2v',
+						\   },
+						\   'component_function': {
+						\     'gitbranch': 'fugitive#head',
+						\   }
+						\ }
+let g:lightline.separator = {
+						\	'left': '', 'right': ''
+						\}
+let g:lightline.subseparator = {
+						\	'left': '', 'right': ''
+						\}
 
 " move vertically by visual line
 nnoremap j gj
@@ -66,5 +100,10 @@ nnoremap <leader>s :mksession!<CR>
 
 let g:ackprg = 'ag --vimgrep'
 
+
+set encoding=UTF-8
 " open ack.vim
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack
+let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
+
+
