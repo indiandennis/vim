@@ -23,7 +23,9 @@ set number              " show line numbers
 set relativenumber
 set undofile
 
-set tabstop=4       	" number of visual spaces per TAB
+set tabstop=4     	" number of visual spaces per TAB
+
+set shiftwidth=4
 
 set showcmd
 
