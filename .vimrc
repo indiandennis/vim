@@ -11,9 +11,6 @@ set background=dark
 colorscheme solarized
 
 
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-set guifont=DroidSansMono_Nerd_Font:h11
-
 set nocompatible
 
 set noshowmode
